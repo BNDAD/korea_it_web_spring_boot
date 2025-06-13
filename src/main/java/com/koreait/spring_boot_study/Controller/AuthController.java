@@ -1,7 +1,9 @@
 package com.koreait.spring_boot_study.Controller;
 
 import com.koreait.spring_boot_study.dto.SigninReqDto;
+import com.koreait.spring_boot_study.dto.SigninRespDto;
 import com.koreait.spring_boot_study.dto.SignupReqDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,9 +72,25 @@ public class AuthController {
     /*Post요청 signin 로그인 로직
      * SigninReqDto => eamil, password
      * 반환 "로그인 완료 : " + signinReqDto.getEmail() + "님 반갑습니다."*/
-    @PostMapping("/signin")
+   /* @PostMapping("/signin")
     public String signin(@RequestBody SigninReqDto signinReqDto) {
         return "로그인 완료 : " + signinReqDto.getEmail() + "님 반갑습니다.";
 
+    }*/
+
+    //ResponseEntity
+    //HTTP 응답 전체를 커스터마이징을 해서 보낼 수 있는 스프링 클래스
+    //HTTP 상태코드, 응답바디, 응답헤더까지 모두 포함
+
+    @PostMapping("/signin")
+    public ResponseEntity<SigninRespDto> singin(@RequestBody SigninReqDto signinReqDto) {
+        SigninRespDto signinRespDto = new SigninRespDto("success", "로그인 성공");
+        return ResponseEntity.ok(signinRespDto);
     }
-}
+    //200 OK =>요청 성공
+    //400 Bad Request => 잘못된 요청 (ex. 유효성 실패, JSON 파싱 오류)
+    //401 Unauthorized => 인증 실패 (ex. 로그인 안 됨, 토큰 없음)
+
+
+
+    }
