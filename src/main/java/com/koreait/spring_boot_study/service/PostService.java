@@ -1,9 +1,7 @@
-package com.koreait.spring_boot_study.Service;
+package com.koreait.spring_boot_study.service;
 
-import com.koreait.spring_boot_study.Repository.PostRepository;
+import com.koreait.spring_boot_study.repository.PostRepository;
 import org.springframework.stereotype.Service;
-
-import javax.swing.plaf.PanelUI;
 
 @Service
 public class PostService {

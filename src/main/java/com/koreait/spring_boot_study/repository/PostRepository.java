@@ -1,4 +1,4 @@
-package com.koreait.spring_boot_study.Repository;
+package com.koreait.spring_boot_study.repository;
 
 import org.springframework.stereotype.Repository;
 
