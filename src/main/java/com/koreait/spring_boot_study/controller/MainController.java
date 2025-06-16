@@ -54,7 +54,7 @@ public class MainController {
     }
 
     @GetMapping("/search")
-    public String getSearch(@RequestParam String keyword, Model model){
+    public String getSearch(@RequestParam String keyword, Model model) {
         model.addAttribute("keyword", keyword);
         return "search.html";
     }
@@ -66,11 +66,15 @@ public class MainController {
 
     @PostMapping("/signup")
     public String signupSubmit(@RequestParam String name, @RequestParam int age, Model model) {
-        UserDto userDto = new UserDto(users.size()+1, name, age);
+        UserDto userDto = new UserDto(users.size() + 1, name, age);
         users.add(userDto);
         model.addAttribute("message", name + "님, 가입을 환영합니다.");
         return "signup-result";
     }
 
-
+    @GetMapping("/users")
+    public String userList(Model model) {
+        model.addAttribute("users", users);
+        return "users";
+    }
 }
